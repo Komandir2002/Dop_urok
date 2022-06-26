@@ -1,16 +1,38 @@
-# This is a sample Python script.
+class Entity:
+    def __init__(self, name, height, weight):
+        self.name = name
+        self.height = height
+        self.__weight = weight
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    @property
+    def weight(self):
+        return self.__weight
+
+    @weight.setter
+    def weight(self, value):
+        self.__weight = value
+
+    def __str__(self):
+        return f"{self.name} {self.height} {self.weight}"
+
+    def go(self):
+        print("Какое то существо")
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+8 to toggle the breakpoint.
+class Temirlan(Entity):
+    def __init__(self, name, height, weight, iq):
+        Entity.__init__(self, name, height, weight)
+        self.iq = iq
+
+    def go(self):
+        print("Шагать")
+
+    def test(self):
+        if self.iq >= 50:
+            print(f"{self.name} is a Human")
+        else:
+            print(f"{self.name} he is not human, he is animal or ameba")
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+entity = Temirlan("Temirlan", 186, 70, 120)
+Temirlan.test(entity)
